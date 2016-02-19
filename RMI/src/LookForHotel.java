@@ -2,6 +2,8 @@
  * J<i>ava</i> U<i>tilities</i> for S<i>tudents</i>
  */
 
+package src;
+
 /**
  * Représente un client effectuant une requête lui permettant d'obtenir les numéros de téléphone des hôtels répondant à son critère de choix.
  * @author  Morat

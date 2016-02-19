@@ -2,6 +2,8 @@
  * J<i>ava</i> U<i>tilities</i> for S<i>tudents</i>
  */
 
+package src;
+
 /**
  * Un numéro de téléphone
  * @author Morat 

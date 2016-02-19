@@ -2,6 +2,8 @@
  * J<i>ava</i> U<i>tilities</i> for S<i>tudents</i>
  */
 
+package src;
+
 /**
  * Un hotel qui est caractérisé par son nom et sa localisation.
  * @author Morat 
