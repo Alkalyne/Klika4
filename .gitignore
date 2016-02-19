@@ -1,5 +1,6 @@
 # exclude itself
 .gitignore
+.gitignore~
 # exclude preferences Finder
 .DS_Store
 # exclude topic
@@ -8,3 +9,7 @@ tp.pdf
 Repository.zip
 # exclude JAR
 jus.util.jar
+# exclude .class
+/bin/
+# exclude .classpath
+.classpath
