@@ -1,0 +1,10 @@
+# exclude itself
+.gitignore
+# exclude preferences Finder
+.DS_Store
+# exclude topic
+tp.pdf
+# exclude inital zip
+Repository.zip
+# exclude JAR
+jus.util.jar
