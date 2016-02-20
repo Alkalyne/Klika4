@@ -1,13 +1,11 @@
 package src;
 
-public class Annuaire {
+public class Annuaire implements _Annuaire {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+	@Override
+	public Numero get(String abonne) {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 }

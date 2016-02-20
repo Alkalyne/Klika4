@@ -1,13 +1,13 @@
 package src;
 
-public class Chaine {
+import java.util.List;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+public class Chaine implements _Chaine {
+
+	@Override
+	public List<Hotel> get(String localisation) {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 }
