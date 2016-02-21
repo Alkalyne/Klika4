@@ -1,11 +1,18 @@
 package src;
 
+import java.util.HashMap;
+
 public class Annuaire implements _Annuaire {
 
+	HashMap<String, Numero> pageJaune = new HashMap<String, Numero>();
+	
+	public Annuaire (HashMap<String, Numero> l){
+		this.pageJaune = l;
+	}
+	
 	@Override
 	public Numero get(String abonne) {
-		// TODO Auto-generated method stub
-		return null;
+		return pageJaune.get(abonne);
 	}
 
 }
