@@ -4,7 +4,6 @@ package src.ServeurChaine;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 
 public class Serveur {
 	/**
@@ -13,7 +12,7 @@ public class Serveur {
 	public static void main(final String args[]) {
 		
 		String nom = "";
-		int port = 1099;
+		int port = 2000;
 		// Récupération des arguments
 		if (args.length != 2) {
 			System.out.println("Server <nom du fichier de chaînes> <port du registry> ");
@@ -45,6 +44,7 @@ public class Serveur {
 			Chaine chaine = new Chaine(nom);
 	    	Naming.bind(name, chaine);
 	    	System.out.println("Object registered : " + name);
+	    	System.out.println("Taille : " + chaine.size());
 		} catch (Exception e) {
 			System.out.println("Server err: " + e);
 		}

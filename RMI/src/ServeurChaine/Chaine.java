@@ -70,4 +70,9 @@ public class Chaine extends UnicastRemoteObject implements _Chaine {
 		return region;
 	}
 
+	public int size() {
+		// TODO Auto-generated method stub
+		return possession.size();
+	}
+
 }
