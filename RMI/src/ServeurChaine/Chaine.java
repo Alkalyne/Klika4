@@ -1,4 +1,4 @@
-package src.Serveur;
+package src.ServeurChaine;
 
 import java.io.File;
 import java.io.IOException;

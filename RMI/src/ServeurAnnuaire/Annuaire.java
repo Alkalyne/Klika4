@@ -1,4 +1,4 @@
-package src.Serveur;
+package src.ServeurAnnuaire;
 
 import java.io.IOException;
 import java.util.HashMap;

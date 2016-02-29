@@ -1,4 +1,4 @@
-package src.Serveur;
+package src.ServeurAnnuaire;
 
 public class Serveur {
 
