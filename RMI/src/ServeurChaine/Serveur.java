@@ -33,9 +33,9 @@ public class Serveur {
 		}
 		
 		// Installation d'un securityManager
-		if (System.getSecurityManager() == null) {
+		/*if (System.getSecurityManager() == null) {
 			System.setSecurityManager(new SecurityManager());
-		}
+		}*/
 
 		// Mise en place du registry
 		try {
@@ -46,10 +46,13 @@ public class Serveur {
 		}
 		
 		try {
+			String name = "//localhost:"+ port +"/"+nom;
 			Chaine chaine = new Chaine(nom);
-	    	Naming.bind("//localhost:"+ port +"/"+nom, chaine);
+	    	Naming.bind(name, chaine);
+	    	System.out.println("Object registered : " + name);
 		} catch (Exception e) {
 			System.out.println("Server err: " + e);
 		}
+		System.out.println("Server running...");
 	}
 }
