@@ -43,7 +43,7 @@ public class LookForHotel{
 			String name = "//" + ou + "/" + qui;
 			System.out.println(this + " -> " + name);
 			obj = (_Chaine) Naming.lookup(name);
-			System.out.println("Liste des hotels à " + localisation + " : " + obj.get(localisation));
+			System.out.println("Liste des hotels à " + localisation + " : " + obj.getHotels(localisation));
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

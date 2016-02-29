@@ -58,19 +58,19 @@ public class Chaine extends UnicastRemoteObject implements _Chaine {
 	}
 	
 	@Override
-	public List<Hotel> get(String localisation) {
+	public List<Hotel> getHotels (String localisation) throws RemoteException {
 		Iterator<Hotel> i = possession.iterator();
 		List<Hotel> region = new LinkedList<Hotel>();
 		while(i.hasNext()){
 			Hotel hCourant = i.next();
 			if(hCourant.localisation == localisation){
 				region.add(hCourant);
-			};	
+			}
 		}
 		return region;
 	}
 
-	public int size() {
+	public int size() throws RemoteException {
 		// TODO Auto-generated method stub
 		return possession.size();
 	}
