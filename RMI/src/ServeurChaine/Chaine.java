@@ -2,6 +2,8 @@ package src.ServeurChaine;
 
 import java.io.File;
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,11 +22,12 @@ import src.commun._Chaine;
 
 
 
-public class Chaine implements _Chaine {
+public class Chaine extends UnicastRemoteObject implements _Chaine {
 	
+	private static final long serialVersionUID = 1L;
 	private List<Hotel> possession = new LinkedList<Hotel>();
 	
-	public Chaine (String filename) {
+	public Chaine (String filename) throws RemoteException { 
 		/* récupération des hôtels de la chaîne dans le fichier xml passé en 1er argument */
 		DocumentBuilder docBuilder = null;
 		Document doc=null;
