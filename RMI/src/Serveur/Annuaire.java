@@ -1,4 +1,4 @@
-package src.commun;
+package src.Serveur;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,6 +11,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import src.commun.Numero;
+import src.commun._Annuaire;
 
 public class Annuaire implements _Annuaire {
 

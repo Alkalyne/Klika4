@@ -1,4 +1,4 @@
-package src.commun;
+package src.Serveur;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +14,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import src.commun.Hotel;
+import src.commun._Chaine;
 
 
 
