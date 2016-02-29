@@ -2,7 +2,7 @@
  * J<i>ava</i> U<i>tilities</i> for S<i>tudents</i>
  */
 
-package src;
+package src.commun;
 
 /**
  * Un hotel qui est caractérisé par son nom et sa localisation.

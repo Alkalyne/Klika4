@@ -2,7 +2,7 @@
  * J<i>ava</i> U<i>tilities</i> for S<i>tudents</i>
  */
 
-package src;
+package src.commun;
 
 import java.util.List;
 

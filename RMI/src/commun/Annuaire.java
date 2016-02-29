@@ -1,4 +1,4 @@
-package src;
+package src.commun;
 
 import java.io.IOException;
 import java.util.HashMap;

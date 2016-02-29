@@ -1,4 +1,4 @@
-package src;
+package src.Client;
 
 public class Client {
 

@@ -1,4 +1,4 @@
-package src;
+package src.commun;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,6 +63,5 @@ public class Chaine implements _Chaine {
 		}
 		return region;
 	}
-
 
 }

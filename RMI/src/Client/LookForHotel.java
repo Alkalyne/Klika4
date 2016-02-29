@@ -2,7 +2,7 @@
  * J<i>ava</i> U<i>tilities</i> for S<i>tudents</i>
  */
 
-package src;
+package src.Client;
 
 /**
  * Représente un client effectuant une requête lui permettant d'obtenir les numéros de téléphone des hôtels répondant à son critère de choix.
