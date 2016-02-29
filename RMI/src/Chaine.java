@@ -21,20 +21,16 @@ public class Chaine implements _Chaine {
 	
 	private List<Hotel> possession = new LinkedList<Hotel>();
 	
-	public Chaine (List<Hotel> l,String filename) {
-		this.possession = l;
-		
+	public Chaine (String filename) {
 		/* récupération des hôtels de la chaîne dans le fichier xml passé en 1er argument */
 		DocumentBuilder docBuilder = null;
 		Document doc=null;
 		try {
 			docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			doc = docBuilder.parse(new File(filename));
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		try {
-			doc = docBuilder.parse(new File(filename));
 		} catch (SAXException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
