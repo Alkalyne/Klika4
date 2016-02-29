@@ -8,7 +8,7 @@ public class Client {
 	public static void main(String args[]) {
 		String nom="", host="localhost", localisation="Paris";
 		// récupération des arguments
-		if (args.length!=2){
+		if (args.length!=3){
 			System.out.println("Client <hostname> <nom générique des objets distants> <localisation>");
 			System.exit(1);
 		}
