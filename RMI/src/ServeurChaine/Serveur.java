@@ -27,9 +27,9 @@ public class Serveur {
 		}
 		
 		// Installation d'un securityManager
-		/*if (System.getSecurityManager() == null) {
+		if (System.getSecurityManager() == null) {
 			System.setSecurityManager(new SecurityManager());
-		}*/
+		}
 
 		// Mise en place du registry
 		try {

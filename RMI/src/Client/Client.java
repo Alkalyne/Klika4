@@ -22,9 +22,9 @@ public class Client {
 		}	
 		// installation d'un securityManager 
 		// A COMPLETER : INSTALLATION DU SECURITYMANAGER
-		/*if(System.getSecurityManager() == null){
+		if(System.getSecurityManager() == null){
 			System.setSecurityManager(new SecurityManager());
-		}*/
+		}
 		// Démarrage des consommateurs
 		new LookForHotel(host, nom, localisation).call();
 	}

@@ -17,6 +17,8 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.sun.org.apache.xml.internal.resolver.helpers.Debug;
+
 import src.commun.Hotel;
 import src.commun._Chaine;
 
