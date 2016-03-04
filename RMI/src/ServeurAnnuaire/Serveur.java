@@ -14,14 +14,14 @@ public class Serveur {
 		int port = 2000;
 		// Récupération des arguments
 		if (args.length != 2) {
-			System.out.println("Server <nom du fichier de chaînes> <port du registry> ");
+			System.out.println("Server <nom du fichier de l'annuaire> <port du registry> ");
 			System.exit(1);
 		}
 		try {
 			nom = args[0];
 			port = Integer.parseInt(args[1]);
 		} catch (Exception e) {
-			System.out.println("Server <nom du fichier de chaînes> <port du registry> ");
+			System.out.println("Server <nom du fichier de l'annuaire> <port du registry> ");
 			System.exit(1);
 		}
 		
