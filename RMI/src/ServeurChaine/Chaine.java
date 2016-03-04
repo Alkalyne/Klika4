@@ -17,8 +17,6 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.sun.org.apache.xml.internal.resolver.helpers.Debug;
-
 import src.commun.Hotel;
 import src.commun._Chaine;
 
@@ -65,7 +63,7 @@ public class Chaine extends UnicastRemoteObject implements _Chaine {
 		List<Hotel> region = new LinkedList<Hotel>();
 		while(i.hasNext()){
 			Hotel hCourant = i.next();
-			if(hCourant.localisation == localisation){
+			if(hCourant.localisation.equals(localisation)){
 				region.add(hCourant);
 			}
 		}

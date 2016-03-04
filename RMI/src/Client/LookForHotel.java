@@ -9,6 +9,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import src.commun._Annuaire;
 import src.commun._Chaine;
 
 /**
@@ -20,8 +21,11 @@ public class LookForHotel{
 	private String localisation;
 	private String ou;
 	private String qui;
+	private String quiAnnuaire;
+	private String ouAnnuaire;
 	
 	private _Chaine obj;
+	private _Annuaire obj2;
 	
 	/**
 	 * Définition de l'objet représentant l'interrogation.
@@ -32,6 +36,8 @@ public class LookForHotel{
 		ou = args[0];
 		qui = args[1];
 		localisation = args[2];
+		ouAnnuaire=args[3];
+		quiAnnuaire=args[4];
 	}
 	/**
 	 * réalise une intérrogation
@@ -43,7 +49,12 @@ public class LookForHotel{
 			String name = "//" + ou + "/" + qui;
 			System.out.println(this + " -> " + name);
 			obj = (_Chaine) Naming.lookup(name);
-			System.out.println("Liste des hotels à " + localisation + " : " + obj.getHotels(localisation));
+			String nameAnnuaire = "//" + ouAnnuaire + "/" + quiAnnuaire;
+			obj2 = (_Annuaire) Naming.lookup(nameAnnuaire);
+
+			System.out.println("Numéro de l'hôtel 0 " + localisation + " : " + obj2.get(obj.getHotels(localisation).get(1).name));
+			
+
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -2,6 +2,7 @@ package src.ServeurAnnuaire;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -16,11 +17,12 @@ import org.xml.sax.SAXException;
 import src.commun.Numero;
 import src.commun._Annuaire;
 
-public class Annuaire implements _Annuaire {
+public class Annuaire extends UnicastRemoteObject implements _Annuaire {
 
+	private static final long serialVersionUID = 1L;
 	HashMap<String, Numero> pageJaune = new HashMap<String, Numero>();
 	
-	public Annuaire (String file){
+	public Annuaire (String file) throws RemoteException{
 		/* Récupération de l'annuaire dans le fichier xml */
 		DocumentBuilder docBuilder = null;
 		Document doc = null;
@@ -51,7 +53,7 @@ public class Annuaire implements _Annuaire {
 	}
 	
 	@Override
-	public Numero get(String abonne) {
+	public Numero get(String abonne) throws RemoteException{
 		return pageJaune.get(abonne);
 	}
 

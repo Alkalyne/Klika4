@@ -6,9 +6,9 @@ public class Client {
 	 * @param args
 	 */
 	public static void main(String args[]) {
-		String nom="", host="localhost", localisation="Paris";
+		String nom="", host="localhost", localisation="Paris",hostAnnuaire="",nameAnnuaire="";
 		// récupération des arguments
-		if (args.length!=3){
+		if (args.length!=5){
 			System.out.println("Client <hostname> <nom générique des objets distants> <localisation>");
 			System.exit(1);
 		}
@@ -16,6 +16,8 @@ public class Client {
 			host = args[0];
 			nom = args[1];
 			localisation = args[2];
+			hostAnnuaire = args[3];
+			nameAnnuaire = args[4];
 		}catch(Exception e) {
 			System.out.println("Client <hostname> <nom générique des objets distants> <localisation>");
 			System.exit(1);
@@ -26,6 +28,6 @@ public class Client {
 			System.setSecurityManager(new SecurityManager());
 		}
 		// Démarrage des consommateurs
-		new LookForHotel(host, nom, localisation).call();
+		new LookForHotel(host, nom, localisation,hostAnnuaire,nameAnnuaire).call();
 	}
 }
