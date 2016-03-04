@@ -20,8 +20,6 @@ import org.xml.sax.SAXException;
 import src.commun.Hotel;
 import src.commun._Chaine;
 
-
-
 public class Chaine extends UnicastRemoteObject implements _Chaine {
 	
 	private static final long serialVersionUID = 1L;

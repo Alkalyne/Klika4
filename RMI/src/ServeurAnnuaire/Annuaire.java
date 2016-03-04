@@ -61,5 +61,4 @@ public class Annuaire extends UnicastRemoteObject implements _Annuaire {
 	public int size() throws RemoteException {
 		return pageJaune.size();
 	}
-
 }

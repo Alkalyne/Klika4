@@ -1,6 +1,5 @@
 package src.ServeurChaine;
 
-
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -11,18 +10,19 @@ public class Serveur {
 	 */
 	public static void main(final String args[]) {
 		
-		String nom = "";
+		String nomFichier = "", nameGenerique = "";
 		int port = 2000;
 		// Récupération des arguments
-		if (args.length != 2) {
-			System.out.println("Server <nom du fichier de chaînes> <port du registry> ");
+		if (args.length != 3) {
+			System.out.println("Server <nom du fichier de chaînes> <port du registry> <nom générique>");
 			System.exit(1);
 		}
 		try {
-			nom = args[0];
+			nomFichier = args[0];
 			port = Integer.parseInt(args[1]);
+			nameGenerique = args[2];
 		} catch (Exception e) {
-			System.out.println("Server <nom du fichier de chaînes> <port du registry> ");
+			System.out.println("Server <nom du fichier de chaînes> <port du registry> <nom générique>");
 			System.exit(1);
 		}
 		
@@ -40,11 +40,11 @@ public class Serveur {
 		}
 		
 		try {
-			String name = "//localhost:"+ port +"/"+nom;
-			Chaine chaine = new Chaine(nom);
+			String name = "//localhost:"+ port +"/"+nameGenerique;
+			Chaine chaine = new Chaine(nomFichier);
 	    	Naming.bind(name, chaine);
-	    	System.out.println("Object registered : " + name);
-	    	System.out.println("Taille : " + chaine.size());
+	    	//System.out.println("Object registered : " + nameGenerique);
+	    	//System.out.println("Taille : " + chaine.size());
 		} catch (Exception e) {
 			System.out.println("Server err: " + e);
 		}
