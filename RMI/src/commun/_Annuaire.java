@@ -18,5 +18,6 @@ public interface _Annuaire extends Remote {
 	 * @return le numéro de télephone de l'abonné
 	 */
 	public Numero get(String abonne) throws RemoteException;
+	
 	public abstract int size() throws RemoteException ;
 }

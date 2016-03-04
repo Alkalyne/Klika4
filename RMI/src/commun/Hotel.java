@@ -27,5 +27,5 @@ public class Hotel implements Serializable{
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {return "Hotel{"+name+","+localisation+"}";}
+	public String toString() {return "Hotel{"+name+", "+localisation+"}";}
 }
