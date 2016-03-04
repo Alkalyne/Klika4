@@ -8,7 +8,11 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.Iterator;
+import java.util.LinkedList;
 
+import src.commun.Hotel;
+import src.commun.Numero;
 import src.commun._Annuaire;
 import src.commun._Chaine;
 
@@ -17,27 +21,30 @@ import src.commun._Chaine;
  * @author  Morat
  */
 public class LookForHotel{
-	/** le critère de localisaton choisi */
-	private String localisation;
-	private String ou;
-	private String qui;
-	private String quiAnnuaire;
-	private String ouAnnuaire;
+	/** on part sur le prédicat que tous les serveurs sont sur la même machine **/
+	String host = "localhost"; 
+	String nomGeneriqueAnnuaire = "";
+	String nomGeneriqueChaine = "";
+	String localisation="Paris";
+	/** ports : on commence par celui de l'annuaire puis on donne celui des différents serveurs de Chaines **/
+	LinkedList<String> ports = new LinkedList<String>();
 	
-	private _Chaine obj;
-	private _Annuaire obj2;
+	private _Chaine[] tabChaines;
+	private _Annuaire pageJaune;
 	
 	/**
 	 * Définition de l'objet représentant l'interrogation.
 	 * @param args les arguments n'en comportant qu'un seul qui indique le critère
 	 *          de localisation
 	 */
-	public LookForHotel(String... args){
-		ou = args[0];
-		qui = args[1];
-		localisation = args[2];
-		ouAnnuaire=args[3];
-		quiAnnuaire=args[4];
+	public LookForHotel(String host, String nomGeneriqueAnnuaire,
+			String nomGeneriqueChaine, String localisation,
+			LinkedList<String> ports) {
+		this.host = host;
+		this.nomGeneriqueAnnuaire = nomGeneriqueAnnuaire;
+		this.nomGeneriqueChaine = nomGeneriqueChaine;
+		this.localisation = localisation;
+		this.ports = ports;
 	}
 	/**
 	 * réalise une intérrogation
@@ -46,15 +53,26 @@ public class LookForHotel{
 	 */
 	public long call() {
 		try {
-			String name = "//" + ou + "/" + qui;
-			System.out.println(this + " -> " + name);
-			obj = (_Chaine) Naming.lookup(name);
-			String nameAnnuaire = "//" + ouAnnuaire + "/" + quiAnnuaire;
-			obj2 = (_Annuaire) Naming.lookup(nameAnnuaire);
-
-			System.out.println("Numéro de l'hôtel 0 " + localisation + " : " + obj2.get(obj.getHotels(localisation).get(1).name));
-			
-
+			// récupération de l'annuaire :
+			String nameAnnuaire = "//" + host + ":" + ports.get(0) + "/" + nomGeneriqueAnnuaire;
+			pageJaune = (_Annuaire) Naming.lookup(nameAnnuaire);
+			// liste des chaines d'hotels :
+			LinkedList<Hotel> listChaine = new LinkedList<Hotel>();
+			for(int i=1; i<5; i++){
+				// récupération des chaines :
+				String nameChaine = "//" + host + ":" + ports.get(i) + "/" + nomGeneriqueChaine;
+				tabChaines[i] = (_Chaine) Naming.lookup(nameChaine);
+				listChaine.addAll(tabChaines[i].getHotels(localisation));
+			}
+			// recherche des numéros :
+			LinkedList<Numero> listNumero = new LinkedList<Numero>();
+			Iterator<Hotel> i = listChaine.iterator();
+			while(i.hasNext()){
+				Hotel hCourant = i.next();
+				listNumero.add(pageJaune.get(hCourant.name));
+			}
+			System.out.println("Voici la liste des numéros d'hotels à " + localisation);
+			System.out.println(listNumero);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,5 +85,4 @@ public class LookForHotel{
 		}
 		return 0;
 	}
-
 }

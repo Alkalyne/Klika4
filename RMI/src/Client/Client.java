@@ -1,33 +1,42 @@
 package src.Client;
 
+import java.util.LinkedList;
+
 public class Client {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String args[]) {
-		String nom="", host="localhost", localisation="Paris",hostAnnuaire="",nameAnnuaire="";
+		String host = "localhost"; /* on part sur le prédicat que tous les serveurs sont sur la même machine */
+		String nomGeneriqueAnnuaire = "";
+		String nomGeneriqueChaine = "";
+		String localisation="Paris";
+		LinkedList<String> ports = new LinkedList<String>();
+		
 		// récupération des arguments
 		if (args.length!=5){
-			System.out.println("Client <hostname> <nom générique des objets distants> <localisation>");
+			System.out.println("Client <hostname> <nom générique des chaines> <nom générique de l'annuaire> <localisation> <ports x5>");
 			System.exit(1);
 		}
 		try {
 			host = args[0];
-			nom = args[1];
-			localisation = args[2];
-			hostAnnuaire = args[3];
-			nameAnnuaire = args[4];
+			nomGeneriqueChaine = args[1];
+			nomGeneriqueAnnuaire = args[2];
+			localisation = args[3];
+			// récupération des 5 ports : on commence par celui de l'annuaire puis on donne celui des différents serveurs de Chaines
+			for(int i=4; i<10; i++){
+				ports.add(args[i]);
+			}
 		}catch(Exception e) {
-			System.out.println("Client <hostname> <nom générique des objets distants> <localisation>");
+			System.out.println("Client <hostname> <nom générique des chaines> <nom générique de l'annuaire> <localisation> <ports x5>");
 			System.exit(1);
 		}	
 		// installation d'un securityManager 
-		// A COMPLETER : INSTALLATION DU SECURITYMANAGER
 		if(System.getSecurityManager() == null){
 			System.setSecurityManager(new SecurityManager());
 		}
-		// Démarrage des consommateurs
-		new LookForHotel(host, nom, localisation,hostAnnuaire,nameAnnuaire).call();
+		// Démarrage de la recherche
+		new LookForHotel(host, nomGeneriqueAnnuaire, nomGeneriqueChaine, localisation, ports).call();
 	}
 }
