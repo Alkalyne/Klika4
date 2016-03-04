@@ -1,6 +1,7 @@
 package src.ServeurAnnuaire;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -52,6 +53,11 @@ public class Annuaire implements _Annuaire {
 	@Override
 	public Numero get(String abonne) {
 		return pageJaune.get(abonne);
+	}
+
+	@Override
+	public int size() throws RemoteException {
+		return pageJaune.size();
 	}
 
 }
