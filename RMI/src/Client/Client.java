@@ -15,8 +15,8 @@ public class Client {
 		LinkedList<String> ports = new LinkedList<String>();
 		
 		// récupération des arguments
-		if (args.length!=5){
-			System.out.println("Client <hostname> <nom générique des chaines> <nom générique de l'annuaire> <localisation> <ports x5>");
+		if (args.length!=9){
+			System.out.println("Arguments number wrong ! \n Client <hostname> <nom générique des chaines> <nom générique de l'annuaire> <localisation> <ports x5>");
 			System.exit(1);
 		}
 		try {
