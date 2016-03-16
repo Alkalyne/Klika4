@@ -1,0 +1,34 @@
+Client :
+localhost
+Chaines Annuaire
+Grenoble
+2000 2001 2002 2003 2004
+
+Annuaire :
+RMI/DataStore/Annuaire.xml
+2000
+Annuaire
+
+Chaine1 : 
+RMI/DataStore/Hotels1.xml
+2001
+Chaines
+
+Chaine2 : 
+RMI/DataStore/Hotels2.xml
+2002
+Chaines
+
+Chaine3 : 
+RMI/DataStore/Hotels3.xml
+2003
+Chaines
+
+Chaine4 : 
+RMI/DataStore/Hotels4.xml
+2004
+Chaines
+
+VM : 
+-Djava.security.policy=RMI.policy 
+-Djava.security.manager
