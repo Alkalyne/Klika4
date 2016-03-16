@@ -33,6 +33,7 @@ public class Hello extends Agent{
 	 */
 	@Override
 	protected _Action retour(){
+		return doIt;
 		// return ...;
 	}
 	// ...

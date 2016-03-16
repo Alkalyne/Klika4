@@ -5,11 +5,9 @@ package jus.aor.mobilagent.kernel;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.rmi.RMISecurityManager;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -179,7 +177,7 @@ public class Starter{
 	 * @param args
 	 */
 	public static void main(String... args) {
-		if(System.getSecurityManager() == null)System.setSecurityManager(new RMISecurityManager());
+		if(System.getSecurityManager() == null)System.setSecurityManager(new SecurityManager());
 		new Starter(args);
 	}
 }
