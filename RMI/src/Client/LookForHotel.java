@@ -29,7 +29,7 @@ public class LookForHotel{
 	/** ports : on commence par celui de l'annuaire puis on donne celui des différents serveurs de Chaines **/
 	LinkedList<String> ports = new LinkedList<String>();
 	
-	private _Chaine[] tabChaines;
+	private _Chaine[] tabChaines = new _Chaine[4];
 	private _Annuaire pageJaune;
 	
 	/**
@@ -61,8 +61,8 @@ public class LookForHotel{
 			for(int i=1; i<5; i++){
 				// récupération des chaines :
 				String nameChaine = "//" + host + ":" + ports.get(i) + "/" + nomGeneriqueChaine;
-				tabChaines[i] = (_Chaine) Naming.lookup(nameChaine);
-				listChaine.addAll(tabChaines[i].getHotels(localisation));
+				tabChaines[i-1] = (_Chaine) Naming.lookup(nameChaine);
+				listChaine.addAll(tabChaines[i-1].getHotels(localisation));
 			}
 			// recherche des numéros :
 			LinkedList<Numero> listNumero = new LinkedList<Numero>();
