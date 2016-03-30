@@ -42,9 +42,10 @@ public final class Server implements _Server {
 			logger=Logger.getLogger(loggerName);
 			/* démarrage du server d'agents mobiles attaché à cette machine */
 			//A COMPLETER
-			this.agentServer = new AgentServer(); // ?????????
+			this.agentServer = new AgentServer(port); // ?????????
 			/* temporisation de mise en place du server d'agents */
 			Thread.sleep(1000);
+			this.agentServer.init();
 		}catch(Exception ex){
 			logger.log(Level.FINE," erreur durant le lancement du serveur"+this,ex);
 			return;
