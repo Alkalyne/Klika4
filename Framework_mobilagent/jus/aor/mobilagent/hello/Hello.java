@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import jus.aor.mobilagent.kernel.AgentServer;
 import jus.aor.mobilagent.kernel._Action;
 import jus.aor.mobilagent.kernel.Agent;
 
@@ -14,7 +15,7 @@ import jus.aor.mobilagent.kernel.Agent;
  * @author  Morat
  */
 public class Hello extends Agent{
-
+	
 	 /**
 	  * construction d'un agent de type hello.
 	  * @param args aucun argument n'est requis
@@ -26,15 +27,10 @@ public class Hello extends Agent{
 	 * l'action à entreprendre sur les serveurs visités  
 	 */
 	protected _Action doIt = new _Action(){
-		// ...
+		private static final long serialVersionUID = 1L;
+		public void execute() {
+			// TODO Auto-generated method stub
+			System.out.println("Hello World");
+		}
 	};
-	/* (non-Javadoc)
-	 * @see jus.aor.mobilagent.kernel.Agent#retour()
-	 */
-	@Override
-	protected _Action retour(){
-		return doIt;
-		// return ...;
-	}
-	// ...
 }

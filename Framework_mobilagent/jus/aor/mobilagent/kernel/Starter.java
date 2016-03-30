@@ -30,7 +30,7 @@ public class Starter{
 	/** le document xml en cours */
 	protected Document doc;
 	/** le logger pour ce code */
-	protected Logger logger;
+	protected static Logger logger;
 	/** le server associé à ce starter */
 	protected jus.aor.mobilagent.kernel._Server server;
 	/** le Loader utilisé */
@@ -179,6 +179,10 @@ public class Starter{
 	public static void main(String... args) {
 		if(System.getSecurityManager() == null)System.setSecurityManager(new SecurityManager());
 		new Starter(args);
+	}
+	
+	public static Logger get_logger() {
+		return logger;
 	}
 }
 
