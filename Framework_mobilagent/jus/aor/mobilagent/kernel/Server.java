@@ -90,9 +90,7 @@ public final class Server implements _Server {
 	 * @throws Exception
 	 */
 	protected void startAgent(_Agent agent, BAMAgentClassLoader loader) throws Exception {
-		//A COMPLETER
-		agent.init(agentServer, name);
-		/* Utilisation du ClassLaoder ???? */
+		agent.init(loader, agentServer, name);
 		agent.run();
 	}
 }
