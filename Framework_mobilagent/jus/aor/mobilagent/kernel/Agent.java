@@ -1,7 +1,5 @@
 package jus.aor.mobilagent.kernel;
 
-import java.util.Iterator;
-
 public abstract class Agent implements _Agent {
 
 	private static final long serialVersionUID = -3686255671996020363L;
@@ -10,9 +8,8 @@ public abstract class Agent implements _Agent {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		Iterator<Etape> i = feuilleDeRoute.iterator();
-		while(i.hasNext()){
-			Etape etapeCourante = i.next();
+		while(feuilleDeRoute.hasNext()){
+			Etape etapeCourante = feuilleDeRoute.next();
 			// je dois aller sur le serveur
 			// etapeCourante.server
 			// pour exécuter l'action
