@@ -9,5 +9,4 @@ public class BAMServerClassLoader extends URLClassLoader{
 		// TODO Auto-generated constructor stub
 		super(urls, classLoader);
 	}
-
 }

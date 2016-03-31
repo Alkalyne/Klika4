@@ -41,11 +41,11 @@ public final class Server implements _Server {
 			loggerName = "jus/aor/mobilagent/"+InetAddress.getLocalHost().getHostName()+"/"+this.name;
 			logger=Logger.getLogger(loggerName);
 			/* démarrage du server d'agents mobiles attaché à cette machine */
-			//A COMPLETER
-			this.agentServer = new AgentServer(port); // ?????????
+			this.agentServer = new AgentServer(name, port);
 			/* temporisation de mise en place du server d'agents */
 			Thread.sleep(1000);
-			this.agentServer.init();
+			/* Lancement du serveur acceuillant les agents */
+			this.agentServer.start();
 		}catch(Exception ex){
 			logger.log(Level.FINE," erreur durant le lancement du serveur"+this,ex);
 			return;
@@ -91,5 +91,8 @@ public final class Server implements _Server {
 	 */
 	protected void startAgent(_Agent agent, BAMAgentClassLoader loader) throws Exception {
 		//A COMPLETER
+		agent.init(agentServer, name);
+		/* Utilisation du ClassLaoder ???? */
+		agent.run();
 	}
 }
