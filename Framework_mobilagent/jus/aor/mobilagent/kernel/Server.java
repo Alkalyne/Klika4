@@ -93,4 +93,13 @@ public final class Server implements _Server {
 		agent.init(loader, agentServer, name);
 		agent.run();
 	}
+	
+	public String toString() {
+		return null;
+	}
+	
+	public final void deployAgent(String classeName, Object[] args, String codeBase,List <ServiceDescriptor> descriptorList) {
+
+	}
+	
 }

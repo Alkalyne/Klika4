@@ -25,39 +25,32 @@ public abstract class Agent implements _Agent {
 		feuilleDeRoute.add(etape);
 	}
 	
-	protected _Action retour()
-	{
+	protected _Action retour(){
 		return _Action.NIHIL;
 	}
 	
-	protected _Service<?> getService(String name)
-	{
+	protected _Service<?> getService(String name){
 		return null;
 	}
 	
-	public Agent ()
-	{
+	public Agent (){
 		
 	}
 	
-	private void move()
-	{
+	private void move(){
 		
 	}
 	
-	protected void move(URI uri)
-	{
+	protected void move(URI uri){
 		
 	}
 	
-	public String toString()
-	{
+	public String toString(){
 		return null;
 		
 	}
 	
-	protected String root()
-	{
+	protected String root(){
 		return null;
 		
 	}
