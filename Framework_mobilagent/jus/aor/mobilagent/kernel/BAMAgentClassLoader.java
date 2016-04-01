@@ -1,19 +1,23 @@
 package jus.aor.mobilagent.kernel;
 
-public class BAMAgentClassLoader extends ClassLoader {
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.Map;
 
-	public Class<?> loadClass(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+public class BAMAgentClassLoader extends URLClassLoader {
 	
-	public Class<?> loadClass(String name,ClassLoader cl) {
-		// TODO Auto-generated method stub
-		return null;
+	Jar jar;
+
+	public BAMAgentClassLoader(URL[] urls) {
+		super(urls);
+		// TODO Auto-generated constructor stub
 	}
 	
 	protected void integrateCode(Jar jar){
-		
+		this.jar = jar;
+		for(Map.Entry<String, byte[]> c : jar){
+			this.defineClass(c.getKey(), c.getValue(), 0, c.getValue().length);
+		}
 	}
 	
 	private String className(String name){
@@ -25,7 +29,7 @@ public class BAMAgentClassLoader extends ClassLoader {
 	}
 	
 	public String toString(){
-		return null;
+		return super.toString();
 	}
 
 }
