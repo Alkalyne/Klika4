@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class BAMAgentClassLoader extends URLClassLoader {
 	
-	Jar jar;
+	private Jar jar;
 
 	public BAMAgentClassLoader(URL[] urls) {
 		super(urls);
@@ -25,7 +25,7 @@ public class BAMAgentClassLoader extends URLClassLoader {
 	}
 	
 	protected Jar extractCode(){
-		return null;
+		return this.jar;
 	}
 	
 	public String toString(){
