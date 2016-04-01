@@ -11,10 +11,10 @@ public class BAMServerClassLoader extends URLClassLoader{
 	}
 	
 	public String toString(){
-		return null;
+		return super.toString();
 	}
 	
-	public void addURL(){
-		
+	public void addURL(URL url){
+		super.addURL(url);
 	}
 }
