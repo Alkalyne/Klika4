@@ -13,6 +13,11 @@ public class BAMAgentClassLoader extends URLClassLoader {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public BAMAgentClassLoader(URL[] urls,ClassLoader cl) {
+		super(urls,cl);
+		// TODO Auto-generated constructor stub
+	}
+	
 	protected void integrateCode(Jar jar){
 		this.jar = jar;
 		for(Map.Entry<String, byte[]> c : jar){
