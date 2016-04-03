@@ -1,20 +1,23 @@
 package jus.aor.mobilagent.kernel;
 
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.Map;
 
-public class BAMAgentClassLoader extends URLClassLoader {
+import java.io.IOException;
+import java.util.Map;
+import java.util.jar.JarException;
+
+public class BAMAgentClassLoader extends ClassLoader {
 	
 	private Jar jar;
 
-	public BAMAgentClassLoader(URL[] urls) {
-		super(urls);
+	public BAMAgentClassLoader(ClassLoader cl) {
+		super(cl);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public BAMAgentClassLoader(URL[] urls,ClassLoader cl) {
-		super(urls,cl);
+	public BAMAgentClassLoader(String name,ClassLoader cl) throws JarException, IOException {
+		super(cl);
+		jar = new Jar(name);
+		integrateCode(jar);
 		// TODO Auto-generated constructor stub
 	}
 	
