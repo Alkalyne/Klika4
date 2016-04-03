@@ -21,7 +21,7 @@ public class BAMAgentClassLoader extends URLClassLoader {
 	}
 	
 	private String className(String name){
-		return null;
+		return jar.getClass(name).toString();
 	}
 	
 	protected Jar extractCode(){
