@@ -5,6 +5,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.jar.JarException;
 
@@ -36,18 +37,11 @@ public class BAMServerClassLoader extends URLClassLoader{
 		integrateCode(jar);
 	}
 	
-@SuppressWarnings("deprecation")
-public void integrateCode(Jar jar) {
-		
-		Iterator<Entry<String,byte[]>> iterator =jar.classIterator().iterator();
-		Class<?> c;
-		
-		while(iterator.hasNext()){
-			Entry<String,byte[]> e = iterator.next();
-			c = defineClass(e.getValue(),0,e.getValue().length);
-			classMap.put(e.getKey(),c);
-			
-		}
+	public void integrateCode(Jar jar) {
+		this.jar = jar;
+ 		for(Map.Entry<String, byte[]> c : jar){
+ 			this.defineClass(c.getKey(), c.getValue(), 0, c.getValue().length);
+ 		}
 	}
 
 }
