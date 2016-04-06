@@ -28,7 +28,7 @@ public interface _Agent extends java.io.Serializable, Runnable {
 	 * @param serverName le nom logique du serveur d'agent
 	 * @throws UnknownHostException 
 	 */
-	public void reInit(AgentServer server, String serverName);
+	public void reInit(AgentServer server, String serverName, BAMAgentClassLoader bamAgent);
 	/**
 	 * ajoute une étape en fin de la feuille de route de l'agent.
 	 * @param etape l'étape à ajouter

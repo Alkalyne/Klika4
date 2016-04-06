@@ -25,7 +25,7 @@ public class BAMServerClassLoader extends URLClassLoader{
 	
 	public void addURL(URL url){
 		try {
-			jar = new Jar(url);
+			jar = new Jar(url.getPath());
 		} catch (JarException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

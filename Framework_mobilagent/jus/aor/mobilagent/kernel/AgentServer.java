@@ -51,7 +51,7 @@ public class AgentServer extends Thread {
 				AgentInputStream ais = new AgentInputStream(socketClient.getInputStream(),BAMAgent);
 				ag = (_Agent) ais.readObject();
 				ais.close();
-				//ag.init(BAMAgent, this, this.name,jar);
+				ag.reInit(this, this.name, BAMAgent);
 				Thread t = new Thread(ag);
 				t.start();
 
