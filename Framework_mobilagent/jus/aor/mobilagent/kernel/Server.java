@@ -68,6 +68,7 @@ public final class Server implements _Server {
 			Class<?> classe = Class.forName(classeName,true,this.getClass().getClassLoader());
 			_Service<?> service = (_Service<?>)classe.getConstructor(Object[].class).newInstance(new Object[]{args});
 			agentServer.addService(name, service);
+			agentServerLoader.close();
 		}catch(Exception ex){
 			logger.log(Level.FINE," erreur durant le lancement du serveur"+this,ex);
 			return;
