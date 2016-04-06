@@ -32,17 +32,11 @@ public class BAMAgentClassLoader extends ClassLoader {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@SuppressWarnings("deprecation")
 	protected void integrateCode(Jar jar){
-		Iterator<Entry<String,byte[]>> iterator =jar.classIterator().iterator();
-		Class<?> c;
-		
-		while(iterator.hasNext()){
-			Entry<String,byte[]> e = iterator.next();
-			c = defineClass(e.getValue(),0,e.getValue().length);
-			classMap.put(e.getKey(),c);
-			
-		}
+		this.jar = jar;
+ 		for(Map.Entry<String, byte[]> c : jar){
+ 			this.defineClass(c.getKey(), c.getValue(), 0, c.getValue().length);
+ 		}
 	}
 	
 	protected Class<?> findClass(String className) throws ClassNotFoundException {
