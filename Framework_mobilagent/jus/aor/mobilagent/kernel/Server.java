@@ -8,6 +8,23 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.net.InetAddress;
+import java.net.URI;
+import java.net.URL;
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.jar.JarException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import jus.aor.mobilagent.kernel.BAMAgentClassLoader;
 import jus.aor.mobilagent.kernel._Agent;
 
@@ -60,7 +77,11 @@ public final class Server implements _Server {
 	 */
 	public final void addService(String name, String classeName, String codeBase, Object... args) {
 		try {
-			//A COMPLETER
+			BAMServerClassLoader agentServerLoader = new BAMServerClassLoader(new URL[]{},this.getClass().getClassLoader());
+			agentServerLoader.addURL(new URL(codeBase));
+			Class<?> classe = Class.forName(classeName,true,this.getClass().getClassLoader());
+			_Service<?> service = (_Service<?>)classe.getConstructor(Object[].class).newInstance(new Object[]{args});
+			agentServer.addService(name, service);
 		}catch(Exception ex){
 			logger.log(Level.FINE," erreur durant le lancement du serveur"+this,ex);
 			return;
@@ -77,6 +98,31 @@ public final class Server implements _Server {
 	public final void deployAgent(String classeName, Object[] args, String codeBase, List<String> etapeAddress, List<String> etapeAction) {
 		try {
 			//A COMPLETER en terme de startAgent
+			BAMAgentClassLoader agentLoader = new BAMAgentClassLoader(new URL{}[],this.getClass().getClassLoader());
+			//on ajout
+			agentLoader.addURL(codeBase.getPath);
+			//on creer la classe
+			Class<?> classe = (Class<?>)Class.forName(classeName,true,agentLoader);
+			//le constructeur
+			Constructor<?> constructor = classe.getConstructor(Object[].class);
+
+			//on creer une nouvelle instance d'un agent
+			Agent agentCourant = (Agent)constructor.newInstance(new Object[]{args});
+
+			agentCourant.init(agentLoader, this.agentServer, this.name);
+
+			agentCourant.addEtape(new Etape(new URI(this.site),_Action.NIHIL));
+			//System.out.println(agentCourant.route.get());
+			//On lui creer une route
+			//si il y a autant d'actions que d'adresses
+			if (etapeAddress.size() == etapeAction.size()){
+				//on lui ajoute toutes les actions
+				for (int i=0;i<etapeAddress.size();i++){
+					Field f = agentCourant.getClass().getDeclaredField(etapeAction.get(i));
+					f.setAccessible(true);
+					_Action action = (_Action) f.get(agentCourant);
+					agentCourant.addEtape(new Etape(new URI(etapeAddress.get(i)), action));
+					//System.out.println(new Etape(new URI(etapeAddress.get(i)), action));
 		}catch(Exception ex){
 			logger.log(Level.FINE," erreur durant le lancement du serveur"+this,ex);
 			return;
