@@ -6,17 +6,38 @@ public abstract class Agent implements _Agent {
 
 	private static final long serialVersionUID = -3686255671996020363L;
 	public Route feuilleDeRoute;
+	protected transient AgentServer agentServ;
+	protected transient String name;
+	protected long tpsInit;
 
+	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		while(feuilleDeRoute.hasNext()){
 			Etape etapeCourante = feuilleDeRoute.next();
 			// je dois aller sur le serveur
-			// etapeCourante.server
+			// etapeCourante.agentServ
 			// pour exécuter l'action
 			etapeCourante.action.execute();
+			move();
 		}
+	}
+	
+	public void init(AgentServer agentServ, String name) {
+		this.agentServ=agentServ;
+		this.agentServ.setName(name);
+		this.name = name;
+		tpsInit = System.currentTimeMillis();
+		if(feuilleDeRoute == null){
+			feuilleDeRoute = new Route(new Etape(agentServ, _Action.NIHIL));
+		}
+	}
+
+
+	public void reInit(AgentServer agentServ, String name) {
+		// TODO Auto-generated method stub
+		this.init(agentServ, name);
 	}
 
 	@Override
@@ -34,7 +55,7 @@ public abstract class Agent implements _Agent {
 	}
 	
 	public Agent (){
-		
+		this.init(agentServ, name);
 	}
 	
 	private void move(){
@@ -46,11 +67,11 @@ public abstract class Agent implements _Agent {
 	}
 	
 	public String toString(){
-		return null;
+		return feuilleDeRoute.toString();
 		
 	}
 	
-	protected String root(){
+	protected String route(){
 		return null;
 		
 	}
