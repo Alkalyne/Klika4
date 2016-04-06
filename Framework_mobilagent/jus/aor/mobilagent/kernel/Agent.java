@@ -4,13 +4,11 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-//** Client mobile qui se déplace de serveur en serveur en emportant avec lui son contexte **/
+//** Client mobile qui se dï¿½place de serveur en serveur en emportant avec lui son contexte **/
 
 public class Agent implements _Agent{
 
@@ -47,7 +45,7 @@ public class Agent implements _Agent{
 
 	
 	@Override
-	// On réinitialise k'agent quand il arrive sur le bus
+	// On rï¿½initialise k'agent quand il arrive sur le bus
 	// > doit transiter avec son BAMAgentClassLoader !
 	public void reInit( AgentServer agentServer, String serverName, BAMAgentClassLoader loader) {
 		// On doit renseigner le serveur courant et le classloader
@@ -60,13 +58,13 @@ public class Agent implements _Agent{
 	
 	@Override
 	public void addEtape(Etape etape) {
-		// Ajout de l'étape à la feuille de route
+		// Ajout de l'ï¿½tape ï¿½ la feuille de route
 		this.route.add(etape);
 	}
 	
 	
 	@Override
-	/** Methode appelée lorsqu'un agent arrive sur un serveur **/
+	/** Methode appelï¿½e lorsqu'un agent arrive sur un serveur **/
 	public void run() {
 		// On execute l'action a effectuer si on ne se trouve pas sur le serveur initial
 				if(route.hasNext() && first){
@@ -82,7 +80,7 @@ public class Agent implements _Agent{
 						try {
 							socket = new Socket(route.get().server.getHost(),route.get().server.getPort());
 							OutputStream os=socket.getOutputStream();
-							// Flux pour l'envoi de données
+							// Flux pour l'envoi de donnï¿½es
 							ObjectOutputStream oosJar = new ObjectOutputStream(os);
 							
 							oosJar.writeObject(jar);

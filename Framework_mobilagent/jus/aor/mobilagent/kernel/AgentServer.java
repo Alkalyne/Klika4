@@ -6,7 +6,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.HashMap;
 
 
@@ -66,11 +65,6 @@ public class AgentServer extends Thread {
 			
 		}
 	}
-	
-	private _Agent getAgent (Socket sock){
-		return null;
-	}
-	
 	
 	protected void addService (String name,_Service<?> service){
 		myService.put(name,service);

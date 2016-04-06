@@ -5,8 +5,10 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
 
 import jus.aor.mobilagent.kernel.AgentServer;
+import jus.aor.mobilagent.kernel.Starter;
 import jus.aor.mobilagent.kernel._Action;
 import jus.aor.mobilagent.kernel.Agent;
 
@@ -29,8 +31,11 @@ public class Hello extends Agent{
 	protected _Action doIt = new _Action(){
 		private static final long serialVersionUID = 1L;
 		public void execute() {
-			// TODO Auto-generated method stub
-			System.out.println("Hello World");
+			Starter.get_logger().log(Level.FINE,"Action -> Hello ~");
 		}
 	};
+	
+	protected _Action retour(){
+		return doIt;
+	}
 }
